@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Models</title>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: #99ccff;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #3366cc;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 60px;
+}
+.firstcol {
+  background-color: #3366cc;
+  width: 100%;
+  color: white;
+  padding: 60px;
+}
+.secondcol {
+  background-color: #3380cc;
+  width: 100%;
+  color: white;
+  padding: 60px;
+}
+
+.btn-group button {
+  background-color: #3366cc; 
+  border: #3366cc; 
+  color: white; 
+  padding: 10px 24px; 
+  cursor: pointer; 
+  float: left; 
+}
+
+
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; 
+}
+
+
+.btn-group button:hover {
+  background-color: #3380cc;
+}
+a:link, a:visited {
+  background-color: #3366cc;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #3380cc;
+}
+
+</style>
+<body>
+<div class="container">
+<div class="firstcol">
+		<hr>
+        <div class="btn-group" style="width:100%">
+		<button style="width:33%" onclick="location.href='http://127.0.0.1:4555'"><b>Grouping Images</b></button> 
+		<button style="width:33%" onclick="location.href='http://127.0.0.1:4555/gallery'"><b>Images for Sorting</b></button>
+		<button style="width:33%" onclick="location.href='http://127.0.0.1:4555/modelcode2'"><b>Sorting</b></button>		
+		</div>
+        <hr>
+		</div>
+    <div class="firstcol">
+
+        <div class="header">
+	<h1>Models</h1>
+	</div>
+		<div class="firstcol">
+		<hr>
+        <div class="btn-group" style="width:100%">
+		
+		<button style="width:100%" onclick="location.href='http://127.0.0.1:4555/0'">Train a new Model</button>
+		
+		</div>
+        <hr>
+		
+		</div>
+		
+		</div>
+		<div class="secondcol">
+		<p>All Available Models</p>
+		<hr>
+		{% for row in mdata %}
+			{% for cell in row %}
+			<a href="/profile/{{cell}}">{{cell}}</a>
+			<hr>
+			{% endfor %}
+		{% endfor %}
+		</div>
+		</div>
+</div>
+	<script>
+		function profFunction(){
+			var count = 0
+			var model = document.getElementsByClassName("nmodel")
+			model = document.getElementsById("namemodel")
+			var url = 'http://127.0.0.1:4555/profile/'
+			url = url + model.innerHTML
+			count = count +1
+			return url
+			window.location.assign(url)
+		}
+	</script>
+</body>
